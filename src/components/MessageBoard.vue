@@ -6,7 +6,7 @@
           <i class="el-icon-edit">发表</i>
         </el-button>
         <!--请修改这两行注释中间的代码完成"刷新"功能-->
-        <el-button style="display: inline-block;margin-right: 15px;">
+        <el-button style="display: inline-block;margin-right: 15px;" @click="update_message_list" >
         <!--请修改这两行注释中间的代码完成"刷新"功能-->
           <i class="el-icon-refresh" style="object-fit: fill">刷新</i>
         </el-button>
@@ -38,7 +38,7 @@
 <script>
 import MessageList from "@/components/MessageList"
 import PostDialog from "@/components/PostDialog"
-// import get_message_list from "../utils/communication.js"
+import { get_message_list } from "../utils/communication.js"
 export default {
 	name: "MessageBoard",
 	components: {
@@ -65,10 +65,16 @@ export default {
     methods: {
         shutPostDialog() {
             this.postDialog.dialogVisible = false
+        },
+        update_message_list() {
+            this.messageList = get_message_list()
         }
     },
     watch: {
         
+    },
+    mounted() {
+        this.update_message_list()
     }
 }
 </script>
