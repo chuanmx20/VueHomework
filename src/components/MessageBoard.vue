@@ -16,6 +16,7 @@
         <!--请补全这两行注释中间的messagelist-->
 		
         <MessageList/>
+        
 		
         <!--请补全这两行注释中间的messagelist-->
       </el-main>
@@ -37,6 +38,7 @@
 <script>
 import MessageList from "@/components/MessageList"
 import PostDialog from "@/components/PostDialog"
+import get_message_list from "../utils/communication.js"
 export default {
 	name: "MessageBoard",
 	components: {
@@ -57,7 +59,8 @@ export default {
 				username:  "",
 				username_valid:false
 			},
-			messageList: []
+            messageList: [],
+            get_message_list
 		}
 	},
     methods: {

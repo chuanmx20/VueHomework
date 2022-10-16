@@ -29,8 +29,8 @@
       <!--请修改这两行注释中间的代码来产生相应按钮的点击事件-->
       <el-button @click="visible=!visible">取 消</el-button>
       <el-button type="primary"
-                  :disabled="state.username_valid===!visible"
-                  @click="visible=false"
+                  :disabled="state.username_valid===false"
+                  @click="visible=!visible"
                   >确 定</el-button>
       <!--请修改这两行注释中间的代码来产生相应按钮的点击事件-->
     </span>
