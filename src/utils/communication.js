@@ -6,10 +6,20 @@ import API from "./API.js"
 import axios from 'axios'
 // 请在下方实现自己的后端通信函数
 export function get_message_list() {
+    var ret = []
     axios.get(API.GET_MESSAGE_LIST.path).then(function (response) {
-        console.log(response)
+        console.log(response.data.data)
+        for (var message in response.data.data) {
+            var item = response.data.data[message]
+            ret.push({
+                title: item.title,
+				message: item.content,
+				user: item.user,
+				timestamp: item.timestamp * 1000
+            })
+        }
     }).catch(function (error) {
         console.log(error.message)
     })
-    return []
+    return ret
 }

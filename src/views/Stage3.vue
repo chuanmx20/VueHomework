@@ -1,14 +1,15 @@
 <template>
   <div id="stage3">
     <!--修改下方的MessageList和PostDialog-->
-    <MessageList/>
-    <PostDialog/>
+    <MessageList :messageList=messageList />
+    <PostDialog :dialogVisible=dialogVisible @shut="()=>dialogVisible=false" />
   </div>
 </template>
 
 <script>
 import MessageList from "@/components/MessageList.vue"
 import PostDialog from "@/components/PostDialog.vue"
+import { get_message_list } from "../utils/communication"
 
 export default {
 	name: 'Stage3',
@@ -24,6 +25,9 @@ export default {
 		}
 	},
 	methods: {
+	},
+	mounted() {
+		this.messageList = get_message_list()
 	}
 }
 </script>

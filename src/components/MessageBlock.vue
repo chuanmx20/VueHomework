@@ -46,6 +46,9 @@ export default {
 			d.setTime(this.timestamp)
 			return d.toLocaleString()
 		}
+	},
+	mounted() {
+		console.log(this.timestamp)
 	}
 }
 </script>
