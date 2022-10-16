@@ -5,6 +5,7 @@
         style="text-align: center"
         title="发表"
         :visible.sync="dialogVisible"
+        :before-close="handleClose"
         :show-close=false
         width="80%">
     <el-form label-width="80px">
@@ -62,7 +63,11 @@ export default {
             visible: Boolean
 		}
 	},
-	methods: {
+    methods: {
+        handleClose(done) {
+            this.$emit('shut')
+            done()
+        }
 	},
 	watch: { // 用于实时检测username是否合法
 		"state.username": {

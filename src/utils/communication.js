@@ -14,7 +14,7 @@ export function get_message_list() {
                 title: item.title,
 				message: item.content,
 				user: item.user,
-				timestamp: item.timestamp * 1000
+				timestamp: item.timestamp > 9999999999 ? item.timestamp : item.timestamp * 1000
             })
         }
     }).catch(function (error) {
