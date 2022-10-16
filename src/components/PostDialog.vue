@@ -115,7 +115,6 @@ export default {
         var cookie_list = document.cookie.split(";");
         for (var i in cookie_list) {
             var cookie = cookie_list[i].split("=");
-            
             if (cookie[0] == 'user')
             {
                 this.state.username = cookie[1]
