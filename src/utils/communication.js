@@ -22,3 +22,17 @@ export function get_message_list() {
     })
     return ret
 }
+export function post_new_message(payload, recall) {
+    axios.post(API.POST_NEW_MESSAGE.path, payload).then(function (response) {
+        if (response.data.code == 201) 
+        {
+            alert("成功发送")
+            recall()    
+        }
+        else 
+            alert("发送失败")
+    }).catch(function (error) {
+        console.log(error.message)
+    })
+    
+}

@@ -24,7 +24,7 @@
       <el-footer>@CST2022SE</el-footer>
     </el-container>
     <!--请补全这两行注释中间的PostDialog-->
-    <PostDialog v-on:shut="shutPostDialog" :dialogVisible="postDialog.dialogVisible"/>
+    <PostDialog v-on:shut="shutPostDialog" v-on:sent="update_message_list" :dialogVisible="postDialog.dialogVisible"/>
     <!--请补全这两行注释中间的PostDialog-->
     <el-dialog
             style="text-align: center"
