@@ -23,7 +23,7 @@
       <el-footer>@CST2022SE</el-footer>
     </el-container>
     <!--请补全这两行注释中间的PostDialog-->
-    <PostDialog/>
+    <PostDialog v-on:shut="shutPostDialog" :dialogVisible="postDialog.dialogVisible"/>
     <!--请补全这两行注释中间的PostDialog-->
     <el-dialog
             style="text-align: center"
@@ -60,8 +60,14 @@ export default {
 			messageList: []
 		}
 	},
-	methods:{
-	}
+    methods: {
+        shutPostDialog() {
+            this.postDialog.dialogVisible = false
+        }
+    },
+    watch: {
+        
+    }
 }
 </script>
 

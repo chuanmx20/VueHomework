@@ -1,5 +1,7 @@
 <template>
   <el-dialog
+        v-bind="$attrs" 
+        v-on="$listeners"
         style="text-align: center"
         title="发表"
         :visible.sync="dialogVisible"
@@ -25,9 +27,10 @@
     </el-form>
     <span slot="footer" class="dialog-footer">
       <!--请修改这两行注释中间的代码来产生相应按钮的点击事件-->
-      <el-button>取 消</el-button>
+      <el-button @click="visible=!visible">取 消</el-button>
       <el-button type="primary"
-                  :disabled="state.username_valid===false"
+                  :disabled="state.username_valid===!visible"
+                  @click="visible=false"
                   >确 定</el-button>
       <!--请修改这两行注释中间的代码来产生相应按钮的点击事件-->
     </span>
@@ -52,9 +55,11 @@ export default {
 				}
 			}
 		}
-	},
+    },
+    emits: ['shut'],
 	data(){
-		return {
+        return {
+            visible: Boolean
 		}
 	},
 	methods: {
@@ -64,7 +69,12 @@ export default {
 			handler(newName) {
 				this.state.username_valid = /^[A-Za-z\u4e00-\u9fa5][-A-Za-z0-9\u4e00-\u9fa5_]*$/.test(newName)
 			}
-		}
+        },
+        "visible": {
+            handler() {
+                this.$emit('shut')
+            }
+        }
 	}
 }
 </script>
