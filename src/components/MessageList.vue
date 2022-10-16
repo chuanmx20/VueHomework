@@ -1,7 +1,9 @@
 <template>
   <div id="message-list">
     <!--请修改这两行注释中间的代码，达到用多个MessageBlock来展示messageList数据的效果-->
-    <MessageBlock/>
+	<div v-for="item in this.messageList" :key="item.timestamp">
+		<MessageBlock :title=item.title :message=item.message :user=item.user :timestamp=item.timestamp />
+	</div>
     <!--请修改这两行注释中间的代码，达到用多个MessageBlock来展示messageList数据的效果-->
   </div>
 </template>
