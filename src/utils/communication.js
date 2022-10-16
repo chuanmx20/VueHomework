@@ -8,7 +8,6 @@ import axios from 'axios'
 export function get_message_list() {
     var ret = []
     axios.get(API.GET_MESSAGE_LIST.path).then(function (response) {
-        console.log(response.data.data)
         for (var message in response.data.data) {
             var item = response.data.data[message]
             ret.push({
