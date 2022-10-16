@@ -75,6 +75,10 @@ export default {
         },
         submit() {
             this.visible = !this.visible
+            let date = new Date()
+            let cookie_life = 15; // minutes
+            date.setTime(date.getTime() + cookie_life * 1000 * 60)
+            document.cookie = "user" + "=" + escape(this.state.username) + ";expires=" + date.toGMTString()
             post_new_message(
                 {
                     "title": this.message.title,
@@ -106,6 +110,18 @@ export default {
                 this.$emit('shut')
             }
         }
-	}
+    },
+    mounted() {
+        var cookie_list = document.cookie.split(";");
+        for (var i in cookie_list) {
+            var cookie = cookie_list[i].split("=");
+            
+            if (cookie[0] == 'user')
+            {
+                this.state.username = cookie[1]
+                break
+            }
+        }
+    }
 }
 </script>
