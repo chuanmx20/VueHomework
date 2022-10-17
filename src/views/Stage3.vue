@@ -2,7 +2,7 @@
   <div id="stage3">
     <!--修改下方的MessageList和PostDialog-->
     <MessageList :messageList=messageList />
-    <PostDialog :dialogVisible=dialogVisible @shut="()=>dialogVisible=false" />
+    <PostDialog :dialogVisible=dialogVisible @shut="()=>dialogVisible=false" @sent="update_message_list" />
   </div>
 </template>
 
@@ -25,9 +25,12 @@ export default {
 		}
 	},
 	methods: {
+		update_message_list() {
+			this.messageList = get_message_list()
+		}
 	},
 	mounted() {
-		this.messageList = get_message_list()
+		this.update_message_list()
 	}
 }
 </script>
